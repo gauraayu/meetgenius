@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply bg-bg text-text;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  *::-webkit-scrollbar { width: 8px; height: 8px; }
+  *::-webkit-scrollbar-track { background: transparent; }
+  *::-webkit-scrollbar-thumb { background: #262626; border-radius: 4px; }
+  *::-webkit-scrollbar-thumb:hover { background: #404040; }
+}
+
+@layer components {
+  .card {
+    @apply bg-bg-panel border border-border rounded-xl p-4;
+  }
+  .input {
+    @apply w-full bg-bg-input border border-border rounded-lg px-3 py-2.5
+           text-text placeholder:text-text-dim
+           focus:outline-none focus:border-accent transition-colors;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-accent hover:bg-accent-hover
+           text-black font-medium px-4 py-2.5 rounded-lg transition-colors
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 bg-bg-card hover:bg-border
+           text-text border border-border px-4 py-2.5 rounded-lg transition-colors;
+  }
+  .label {
+    @apply block text-xs font-medium text-text-muted uppercase tracking-wider mb-2;
+  }
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium;
+  }
+  .badge-success { @apply badge bg-accent-muted text-accent; }
+  .badge-warning { @apply badge bg-orange-500/10 text-orange-500; }
+  .badge-danger  { @apply badge bg-red-500/10 text-red-500; }
+}
+
+/* Pulse animation for live indicator */
+@keyframes pulse-recording {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.recording-dot {
+  animation: pulse-recording 1.5s ease-in-out infinite;
+}
